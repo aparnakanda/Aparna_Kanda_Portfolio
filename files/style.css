@@ -33,8 +33,44 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     max-width: 100vw;
     box-sizing: border-box;
 }
+/* Mobile Menu Icon */
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+}
 
-/* Header */
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar {
+        display: none;  /* Hidden by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 10%;
+        background: rgba(0, 0, 0, 0.9);
+        width: 200px;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .navbar a {
+        display: block;
+        padding: 10px 0;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    /* When menu is active */
+    .navbar.show {
+        display: flex;
+    }
+}
+
 .header {
     position: fixed;
     top: 0;
@@ -73,7 +109,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     transition: 0.3s ease;
 }
 
-/* Hover Effect */
 .navbar a:hover {
     color: #0ef;
     text-decoration: underline;
@@ -326,7 +361,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 /*about*/
 /* About Section */
 .about {
-    background-color: #0a0a0a;
+    background-color: black;
     padding: 80px 10%;
     display: flex;
     justify-content: center;
@@ -394,231 +429,221 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 
   
 
-.education {
-    padding: 60px 5%;
-    background: #111;
+
+
+/* Section Title */
+.title {
+    font-size: 40px;
+    color: cyan;
+    margin-bottom: 30px;
     text-align: center;
 }
 
-/* Title Styling */
-.subtitle {
-    font-size: clamp(30px, 5vw, 50px);
-    color: cyan;
-    margin-bottom: 40px;
-    font-weight: bold;
-    font-size: 40px;
+
+
+/* Education Container */
+.education-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 90%;
+    margin: auto;
+    flex-wrap: wrap;
+    gap:20px;
+}
+.education-section{
+    background-color: black;
 }
 
-/* Education Container - Grid for 3-column layout */
-.education-cards {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-    gap: 30px;
-    width: 100%;
-}
-
-/* Individual Education Cards */
-.edu-card {
+/* Education Item */
+.education-item {
     background: #222;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px cyan;
+    border-radius: 12px;
     text-align: center;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.edu-card:hover {
-    transform: scale(1.05);
     box-shadow: 0 0 15px cyan;
+    width: 25%;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    margin: 0 20px;
+    
 }
 
-.edu-card h3 {
-    font-size: clamp(20px, 2.5vw, 24px);
+/* Hover Effect */
+.education-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px cyan;
+}
+
+/* Education Content */
+.education-content {
+    text-align: center;
+}
+
+.education-content h3 {
     color: cyan;
-    margin-bottom: 10px;
-    /* font-weight: bold; */
-    font-size: 20px;
+    font-size: 22px;
+    margin-bottom: 5px;
 }
 
-.edu-card p {
-    font-size: clamp(14px, 2vw, 16px);
-    color: white;
-    margin: 5px 0;
-    line-height: 1.5;
+/* Icon Box */
+.icon-box {
+    width: 50px;
+    height: 50px;
+    background: cyan;
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin: 0 auto 10px;
+    box-shadow: 0 0 10px cyan;
+    transition: transform 0.3s ease-in-out;
 }
 
-/* 🔹 Responsive Design */
+/* Icon Hover */
+.icon-box:hover {
+    transform: rotate(360deg);
+}
 
-/* Tablet View - Two cards per row */
-@media (max-width: 900px) {
-    .education-cards {
-        grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+/* Vertical Line */
+.vertical-line {
+    width: 3px;
+    height: 100px;
+    background: cyan;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .education-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .education-item {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .vertical-line {
+        width: 50px;
+        height: 3px;
     }
 }
 
-/* Mobile View - One card per row */
-@media (max-width: 600px) {
-    .education {
-        padding: 50px 5%;
-    }
 
-    .education-cards {
-        grid-template-columns: 1fr; /* 1 card per row */
-    }
-
-    .subtitle {
-        font-size: 28px;
-    }
-
-    .edu-card h3 {
-        font-size: 18px;
-    }
-
-    .edu-card p {
-        font-size: 14px;
-    }
-}
-
-
-
-/*skills*/
 :root {
-    --main-color: #0eff;
-    --bg-color: #121212;
-    --second-bg-color: #1e1e1e;
+    --bg-color: black;
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.2);
     --text-color: #ffffff;
-  }
-  
-  /* Skills Section with Timeline Design */
-  .skills {
-    padding: 100px 15px;
-    background: #111;
+    --hover-glow: rgba(0, 255, 255, 0.5);
+}
+
+.skills {
+    padding: 80px 5%;
+    background: var(--bg-color);
+    text-align: center;
+}
+
+.skills .main-text {
+    font-size: 36px;
+    color: cyan;
+    margin-bottom: 40px;
+}
+
+/* Skills Grid */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+/* Skill Card */
+.skill {
+    width: 120px;
+    height: 120px;
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-  }
-  
-  .skills .heading {
+    padding: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Skill Icons */
+.skill i {
     font-size: 40px;
-    margin-bottom: 40px;
     color: cyan;
-  }
-  
-  .timeline-items {
-    max-width: 1200px;
-    margin: auto;
-    position: relative;
-  }
-  
-  .timeline-items::before {
-    content: "";
-    position: absolute;
-    width: 5px;
-    height: 100%;
-    background-color: var(--main-color);
-    left: calc(50% - 2.5px);
-  }
-  
-  .timeline-item {
-    margin-bottom: 40px;
-    width: 100%;
-    position: relative;
-  }
-  
-  /* Alternate left/right alignment */
-  .timeline-item:nth-child(odd) {
-    padding-right: calc(50% + 30px);
-    text-align: right;
-  }
-  
-  .timeline-item:nth-child(even) {
-    padding-left: calc(50% + 30px);
-    text-align: left;
-  }
-  
-  .timeline-dot {
-    height: 21px;
-    width: 21px;
-    background-color: var(--main-color);
-    box-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color);
-    position: absolute;
-    left: calc(50% - 10px);
-    border-radius: 50%;
-    top: 10px;
-  }
-  .timeline-content {
-    width: 1000px;  /* Reduced width */
-    max-width: 90%; /* Ensures responsiveness on smaller screens */
-    padding: 20px;
-    background: #222;
-    border-radius: 10px;
-    box-shadow: 0 0 10px cyan;
-    text-align: center;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 10px;
 }
 
+/* Skill Title */
+.skill h3 {
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+/* Hover Effect */
+.skill:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px var(--hover-glow);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    .timeline-content {
-        width: 90%;  /* Adjusts width for tablets */
+    .skill {
+        width: 100px;
+        height: 100px;
+    }
+
+    .skill i {
+        font-size: 30px;
+    }
+
+    .skill h3 {
+        font-size: 12px;
     }
 }
 
-  .timeline-content {
-    background-color: var(--bg-color);
-    border: 3px solid var(--main-color);
-    padding: 15px 25px;
-    border-radius: 2rem;
-    box-shadow: 0 0 10px var(--main-color);
-    transition: 0.3s ease-in-out;
-  }
-  
-  .timeline-content:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px var(--main-color);
-  }
-  
-  .timeline-content h3 {
-    font-size: 20px;
-    color: white;
-    margin: 0 0 10px;
-  }
-  
-  .timeline-content p {
-    color: white;
-    font-size: 16px;
-    line-height: 22px;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .timeline-items::before {
-      left: 20px;
+@media (max-width: 480px) {
+    .skills {
+        padding: 50px 5%;
     }
-    .timeline-item {
-      width: 100%;
-      text-align: left;
-      padding-left: 40px;
-      float: none;
+
+    .skills-container {
+        gap: 15px;
     }
-    .timeline-item:nth-child(odd),
-    .timeline-item:nth-child(even) {
-      padding: 0;
+
+    .skill {
+        width: 90px;
+        height: 90px;
     }
-    .timeline-content {
-      width: calc(100% - 40px);
-      margin: 0 0 20px 0;
+
+    .skill i {
+        font-size: 28px;
     }
-  }
-  
+
+    .skill h3 {
+        font-size: 10px;
+    }
+}
+
   
 
 
 /* ---------- PROJECTS SECTION ---------- */
 #Projects {
-    background: linear-gradient(to right, #121212, #1e1e1e);
+    background: black;
     padding: 80px 10%;
     text-align: center;
 }
@@ -731,7 +756,11 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     transition: transform 0.3s ease-in-out;
     margin: 10px;
 }
-
+ .sub-title h2{
+        font-size: 40px;
+        color: cyan;
+        margin-bottom: 40px;
+}
 .internship-card:hover {
     transform: scale(1.05);
 }
@@ -797,7 +826,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 .contact-text h2 {
-    font-size: 60px;
+    font-size: 50px;
     line-height: normal;
     text-align: center;
 
@@ -809,6 +838,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 
 .contact-text h4 {
     margin: 15px 0;
+    margin-left: 10px;
     color: rgb(228, 228, 228);
     font-size: 20px;
     font-weight: 600;
@@ -993,62 +1023,11 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     }
 }
 
-@media (max-width: 900px) and (min-width: 700px) {
-    .header{
-        display:block;
-    }
-    .logo {
-        position: relative;
-        font-size: 30px;
-        font-weight: 500;
-        text-align: center;
-    }
-    .logo::after{
-        content: "\a";
-        white-space: pre;
-    }
-    .navbar a {
-        font-size: 25px;
-        font-weight: 200;
-        margin-left: 0px;
-        padding: 10px 10px 0 0;
-    }
-    .navbar a::after{
-        content: "\a";
-        white-space: pre;
-    }
-    
-}
 
 @media (max-width: 700px) and (min-width: 400px) {
     *{
         overflow-x: hidden;
         overflow-y: inherit;
-    }
-    /*navbar*/
-    .header{
-        display:block;
-        
-    }
-    .logo {
-        position: relative;
-        font-size: 20px;
-        font-weight: 500;
-        text-align: center;
-    }
-    .logo::after{
-        content: "\a";
-        white-space: pre;
-    }
-    .navbar a {
-        font-size: 15px;
-        font-weight: 200;
-        margin-left: 0px;
-        padding: 10px 10px 0 0;
-    }
-    .navbar a::after{
-        content: "\a";
-        white-space: pre;
     }
 
     /*home*/
@@ -1148,18 +1127,19 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     .main-text {
         padding-top: 20px;
         margin-top: 10px;
+        
         padding-bottom: 50px;
     }
     .main-text h2 {
-        font-size: 50px;
+        font-size: 40px;
         padding-bottom: 15px;
     }
     .layer p {
         line-height: normal;
     }
     /*service*/
-    .sub-title {
-        font-size: 50px;
+    .sub-title h2 {
+        font-size: 40px;
         padding-bottom: 50px;
     }
     .prj-list div{
@@ -1191,29 +1171,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 @media (max-width: 400px) {
     *{
         overflow-x: hidden;
-    }
-    .header{
-        display:block;
-    }
-    .logo {
-        position: relative;
-        font-size: 20px;
-        font-weight: 500;
-        text-align: center;
-    }
-    .logo::after{
-        content: "\a";
-        white-space: pre;
-    }
-    .navbar a {
-        font-size: 13px;
-        font-weight: 200;
-        margin-left: 0px;
-        padding: 10px 4px 0 0;
-    }
-    .navbar a::after{
-        content: "\a";
-        white-space: pre;
     }
 
     /*home*/
@@ -1320,7 +1277,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
         padding-bottom: 50px;
     }
     .main-text h2 {
-        font-size: 50px;
+        font-size: 40px;
         padding-bottom: 15px;
     }
     .layer p {
@@ -1329,13 +1286,13 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 
     /*service*/
     .sub-title {
-        font-size: 50px;
+        font-size: 40px;
         padding-bottom: 50px;
     }
 
     /*contact*/
     .contacts h2{
-        font-size: 50px;
+        font-size: 40px;
     }
     .contact-list i{
         font-size: 13px;

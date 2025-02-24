@@ -18,6 +18,10 @@ window.addEventListener("scroll",() =>{
     }
 })
 
+
 function toggleMenu() {
-    document.querySelector(".navbar").classList.toggle("show");
+    const navbar = document.querySelector(".navbar");
+    navbar.classList.toggle("show");
 }
+
+
